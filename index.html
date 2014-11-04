@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<script src="phonegap.js"></script>
+<style type="text/css">
+  .page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 20px;
+  }
+
+  .active {
+    display: block;
+  }
+
+  #pageone {
+    border: 1px solid #5072A7;
+  }
+  #pageone h1 {
+    color: #5072A7;
+  }
+
+  #pagetwo {
+    border: 1px solid #93C572;
+  }
+  #pagetwo h1 {
+    color: #93C572;
+  }
+
+  #pagethree {
+    border: 1px solid #F28500;
+  }
+  #pagethree h1 {
+    color: #F28500;
+  }
+</style>
+<script>
+var showpage = function(pageid){
+  var divs = document.getElementsByTagName('div');
+  for(var i in divs){
+    if(divs[i] && divs[i].className){
+      divs[i].className = divs[i].className.replace(' active', '');
+      if(divs[i].id == pageid){
+        divs[i].className += ' active';
+      }
+    }
+  }
+  return false;
+}
+</script>
+</head>
+<body>
+
+  <div id="pageone" class="page active">
+    <h1>Page One</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet massa feugiat, tempor nulla nec, commodo sapien. Maecenas pellentesque pellentesque dolor. Donec eu fringilla elit. Donec vulputate augue in leo auctor feugiat. Cras ullamcorper tortor a facilisis blandit. Maecenas mattis, ligula sed viverra iaculis, leo risus pretium nisl, sit amet ornare tellus ipsum ut nisi. Nunc mattis magna sed magna bibendum fringilla. Nullam pretium, metus a ornare iaculis, neque nulla porta metus, a vehicula sem metus nec odio.</p>
+    <a href="" onclick="showpage('pagetwo');return false;" id="link1">Show Page Two</a>
+  </div>
+
+  <div id="pagetwo" class="page">
+    <h1>Page Two</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet massa feugiat, tempor nulla nec, commodo sapien. Maecenas pellentesque pellentesque dolor. Donec eu fringilla elit. Donec vulputate augue in leo auctor feugiat. Cras ullamcorper tortor a facilisis blandit. Maecenas mattis, ligula sed viverra iaculis, leo risus pretium nisl, sit amet ornare tellus ipsum ut nisi. Nunc mattis magna sed magna bibendum fringilla. Nullam pretium, metus a ornare iaculis, neque nulla porta metus, a vehicula sem metus nec odio.</p>
+    <a href="" onclick="showpage('pagethree');return false;" id="link2">Show Page Three</a>
+  </div>
+
+  <div id="pagethree" class="page">
+    <h1>Page Three</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet massa feugiat, tempor nulla nec, commodo sapien. Maecenas pellentesque pellentesque dolor. Donec eu fringilla elit. Donec vulputate augue in leo auctor feugiat. Cras ullamcorper tortor a facilisis blandit. Maecenas mattis, ligula sed viverra iaculis, leo risus pretium nisl, sit amet ornare tellus ipsum ut nisi. Nunc mattis magna sed magna bibendum fringilla. Nullam pretium, metus a ornare iaculis, neque nulla porta metus, a vehicula sem metus nec odio.</p>
+    <a href="" onclick="showpage('pageone');return false;" id="link3">Back to page one!</a>
+  </div>
+
+</body>
+</html>
