@@ -11,7 +11,7 @@ window.testing = new (function(){
 			setTimeout(function(){
 				$('.adviceList a.ui-link').first().click();
 				setTimeout(function(){
-					$('#adviceDetailPainful .adviceDetailContent a').click();
+					//$('#adviceDetailPainful .adviceDetailContent a').click();
 				}, defaultTimeout);
 			}, defaultTimeout);
 		}, defaultTimeout);
