@@ -32,13 +32,30 @@ window.testing = new (function(){
 				}, extendedTimeout);
 			}, extendedTimeout);
 		}, shortTimeout);
-	}
+	};
+
+	me.maps = function(ref){
+		setTimeout(function(){
+			$('a.map').click();
+			setTimeout(function(){
+				$('#mapSearchBox').val('London');
+				$('#mapForm').submit();
+				setTimeout(function(){
+					$('#location2').click();
+					setTimeout(function(){
+						$('#tabList a').first().click();
+					}, extendedTimeout);
+				}, extendedTimeout);
+			}, extendedTimeout);
+		}, shortTimeout);
+	};
 
 
 	// 
 	me.start = function(){
 		//me.adviceScreen();
-		me.moreScreen();
+		//me.moreScreen();
+		me.maps();
 	}
 
 	//
