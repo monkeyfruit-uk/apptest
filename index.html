@@ -878,7 +878,9 @@
           if(testing){
             testing.start();
           }
-          navigator.splashscreen.hide();
+          if(navigator.splashscreen){
+            navigator.splashscreen.hide();
+          }
         }, hideSplashAfter);
 
     };
