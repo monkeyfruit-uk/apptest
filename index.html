@@ -865,7 +865,10 @@
     });
       
     var loadIt = function(){
-
+        if(!window.app){
+          setTimeout(loadIt, 100);
+          return
+        }
         loadMaps();
         loadProfileData();
         loadFeedData();
