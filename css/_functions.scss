@@ -1,0 +1,11 @@
+/************************************************
+*				FUNCTIONS                       *
+*************************************************/
+
+@function em($target, $context: 16) {
+    @return ($target / $context) * 1em;
+}
+
+@function percent($target, $container) {
+  @return ($target / $container) * 100%;
+}

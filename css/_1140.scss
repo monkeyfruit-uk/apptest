@@ -1,0 +1,77 @@
+/* CSS Resets */
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
+
+
+/* ==================================================================================================================== */
+/* ! The 1140px Grid V2 by Andy Taylor \ http://cssgrid.net \ http://www.twitter.com/andytlr \ http://www.andytlr.com   */
+/* ==================================================================================================================== */
+
+.pageContainer {
+	margin: 0 auto;
+	// width: 1140px;
+	position: relative;
+}
+
+.ie8 .container {
+	width: 1140px;
+}
+
+.nopad{
+	padding:0!important;
+}
+
+.row {
+padding-left: 70px;
+padding-right: 70px;
+width: calc(100% - 140px);
+min-width: 453px;
+overflow: visible;
+display: inline-block;
+}
+
+.ie8 .row {
+	width:1140px !important;
+}
+
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
+margin-right: percent(40,1040);
+float: left;
+min-height: 1px;
+}
+
+.row .onecol {
+width: percent(140,1040);
+}
+
+.row .twocol {
+width: percent(320,1040);
+}
+
+.row .threecol {
+width: percent(500,1040);
+}
+
+.row .fourcol {
+width: percent(680,1040);
+}
+
+.row .fivecol {
+width: percent(860,1040);
+}
+
+.row .sixcol {
+width: 100%;
+}
+
+.last {
+margin-right: 0px;
+}
+
+img, object, embed {
+//max-width: 100%;
+}
+
+img {
+	height: auto;
+}

@@ -2,77 +2,895 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<script src="phonegap.js"></script>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css">
+<link rel="stylesheet" href="css/style.css">
 <style type="text/css">
-  .page {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: none;
-    padding: 20px;
-  }
+	body {
+	/* Setting body margins to 0 to have proper positioning of #container div */
+	    margin: 0;
+	}
+	/* #container div with absolute position and 100% width and height so it takes up whole window */
+	#container {
+	    position: absolute;
+	    width: 100%;
+	    height: 100%;
+	}
 
-  .active {
-    display: block;
-  }
-
-  #pageone {
-    border: 1px solid #5072A7;
-  }
-  #pageone h1 {
-    color: #5072A7;
-  }
-
-  #pagetwo {
-    border: 1px solid #93C572;
-  }
-  #pagetwo h1 {
-    color: #93C572;
-  }
-
-  #pagethree {
-    border: 1px solid #F28500;
-  }
-  #pagethree h1 {
-    color: #F28500;
+  #tabMap img {
+    max-width: none !important; 
   }
 </style>
-<script>
-var showpage = function(pageid){
-  var divs = document.getElementsByTagName('div');
-  for(var i in divs){
-    if(divs[i] && divs[i].className){
-      divs[i].className = divs[i].className.replace(' active', '');
-      if(divs[i].id == pageid){
-        divs[i].className += ' active';
-      }
-    }
-  }
-  return false;
-}
+<script src="phonegap.js"></script>
+<script src="js/jquery-1-10-2.js"></script>
+<script src="js/jquery.mobile-1.4.2.js"></script>
+<script type="text/javascript">
+    $(document).one("mobileinit", function () {
+        // Setting #container div as a jqm pageContainer
+        $.mobile.pageContainer = $('#container');
+        // Setting default page transition to slide
+        $.mobile.defaultPageTransition = 'slide';
+    });
 </script>
+<script data-main="js/app" src="js/require.js"></script>
+<script data-main="js/app" src="testing.js"></script>
+
 </head>
 <body>
-
-  <div id="pageone" class="page active">
-    <h1>Page One</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet massa feugiat, tempor nulla nec, commodo sapien. Maecenas pellentesque pellentesque dolor. Donec eu fringilla elit. Donec vulputate augue in leo auctor feugiat. Cras ullamcorper tortor a facilisis blandit. Maecenas mattis, ligula sed viverra iaculis, leo risus pretium nisl, sit amet ornare tellus ipsum ut nisi. Nunc mattis magna sed magna bibendum fringilla. Nullam pretium, metus a ornare iaculis, neque nulla porta metus, a vehicula sem metus nec odio.</p>
-    <a href="" onclick="showpage('pagetwo');return false;" id="link1">Show Page Two</a>
+<div id="container"/>
+<!-- HOME --> 
+<div data-role="page" id="home">
+  <div data-role="header">
+    <header>
+    </header>
   </div>
 
-  <div id="pagetwo" class="page">
-    <h1>Page Two</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet massa feugiat, tempor nulla nec, commodo sapien. Maecenas pellentesque pellentesque dolor. Donec eu fringilla elit. Donec vulputate augue in leo auctor feugiat. Cras ullamcorper tortor a facilisis blandit. Maecenas mattis, ligula sed viverra iaculis, leo risus pretium nisl, sit amet ornare tellus ipsum ut nisi. Nunc mattis magna sed magna bibendum fringilla. Nullam pretium, metus a ornare iaculis, neque nulla porta metus, a vehicula sem metus nec odio.</p>
-    <a href="" onclick="showpage('pagethree');return false;" id="link2">Show Page Three</a>
+  <div data-role="main" data-transition="slide"  class="ui-content homePage">
+    <div class="wrapper">
+        <a class="timer" data-transition="slide"  href="#timer"><img src="images/icon-timer-home.png" alt="Timer">TIMER</a>
+        <a class="baby" data-transition="slide"  href="#baby"><div class="babyWrapper" style="border-radius: 75px; height: 150px; width: 150px; overflow: hidden;"><img src="images/icon-baby-home.png"  alt="Baby"></div><br/>BABY</a>
+        <a class="map" data-transition="slide"  href="#map"><img src="images/icon-map-home.png" alt="Map">MAP</a>
+        <a class="diary" data-transition="slide"  href="#diary"><img src="images/icon-diary-home.png" alt="Diary">DIARY</a>
+        <a class="advice" data-transition="slide"  href="#advice"><img src="images/icon-advice-home.png" alt="Advice">ADVICE</a>
+        <a class="more" data-transition="slide" href="#more"><img src="images/icon-more-home.png" alt="More">MORE</a>
+    </div>
   </div>
+</div>
 
-  <div id="pagethree" class="page">
-    <h1>Page Three</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet massa feugiat, tempor nulla nec, commodo sapien. Maecenas pellentesque pellentesque dolor. Donec eu fringilla elit. Donec vulputate augue in leo auctor feugiat. Cras ullamcorper tortor a facilisis blandit. Maecenas mattis, ligula sed viverra iaculis, leo risus pretium nisl, sit amet ornare tellus ipsum ut nisi. Nunc mattis magna sed magna bibendum fringilla. Nullam pretium, metus a ornare iaculis, neque nulla porta metus, a vehicula sem metus nec odio.</p>
-    <a href="" onclick="showpage('pageone');return false;" id="link3">Back to page one!</a>
+
+<!-- BABY --> 
+<div data-role="page" id="baby">
+  <div data-role="header">
+    <header>
+    </header>
   </div>
+  <div data-role="main" data-transition="slide"  class="ui-content cameraContent">
 
+    <a href="#babyCamera" data-transition="slide" class="camera">
+      <img src="images/camera.png" alt="Take a photo">
+      <div class="addPhoto">ADD A PHOTO</div>
+    </a>
+    <form action="#timer" data-transition="slide" data-direction="reverse"  method="post">
+      <input type="text" placeholder="Baby name" name="name" id="profile-name" data-role="none">
+      <!-- <input type="text"  placeholder="dob" name="birthday" id="profile-dob"> -->
+      <input type="button" onClick="location.href='#timer';" data-transition="slide" data-role="none" value="SUBMIT DETAILS" class="submit" id="profile-submit">
+    </form> 
+  </div>
+</div>
+<!-- BABY --> 
+<div data-role="page" id="babyCamera">
+  <div data-role="header">
+    <header>
+      <a href="#baby" data-transition="slide" data-direction="reverse" class="back">
+        <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span>
+      </a>
+    </header>
+  </div>
+  <div data-role="main" data-transition="slide"  class="ui-content">
+    <div class="imageWrapper">
+      <img id="profile-photo" src="images/baby-preview.jpg" alt="preview" class="babyPreview">
+    </div>
+    <div class="buttons">
+      <a href="#" class="take" id="photo-take"><img src="images/button-camera.png" alt="Take photo"></a>
+      <a href="#" class="library" id="photo-get"><img src="images/button-library.png" alt="Use existing image"></a>
+    </div>
+  </div>
+</div>
+<!-- TIMER --> 
+<div data-role="page" id="timer">
+	<div data-role="header">
+		<header>
+			<div class="avatar">
+				<a data-transition="slide" href="#babyCamera" class="avatarLink">
+          <img id="timer-profile-photo" src="images/avatar.jpg" alt="avatar">
+        </a>
+			</div>
+			<div class="name" id="timer-profile-name">William</div>
+			<div class="time"><strong>Last feed: </strong><span id="timer-feed-time">3 hours 15 minutes ago</span></div>
+			<div class="side"><strong>Last side nursed:</strong><div class="circle"><span id="timer-feed-side">R</span></div></div>
+		</header>
+	</div>
+  <div data-role="main" class="ui-content">
+  	<div id="nipple">
+  		<div class="inner"></div>
+  		<div id="tap">Tap to Start</div>
+  		<div id="clock">00:00</div>
+  	</div>
+  	<div class="left reminder selected"><span>LEFT</span></div>
+  	<div class="right reminder"><span>RIGHT</span></div>
+    <div id="timer-save" class="left">
+      <img src="images/button-save.png" alt="Save">
+      <span>Save to diary</span>
+    </div>
+    <div id="timer-reset" class="right">
+      <img src="images/button-clear.png" alt="Reset">
+      <span>Reset timer</span>
+    </div>
+  </div>
+</div>
+<!-- ADVICE --> 
+<div data-role="page" id="advice">
+	<div data-role="header" class="header">
+	<header>
+		<div class="title">Breast Feeding FAQs</div>
+	</header>
+	</div>
+	<div data-role="main" class="ui-content adviceList">
+		<ul>
+      <li><a href="#adviceDetailPainful" data-transition="slide">Is breastfeeding painful?</a></li>
+      <li><a href="#adviceDetailAlcohol" data-transition="slide">Can I drink alcohol while breastfeeding?</a></li>
+      <li><a href="#adviceDetailSmoke" data-transition="slide">What happens if I smoke when breastfeeding?</a></li>
+      <li><a href="#adviceDetailMedi" data-transition="slide">Will I be able to take medication while breastfeeding?</a></li>
+      <li><a href="#adviceDetailWind" data-transition="slide">Do I need to wind a breastfed baby?</a></li>
+      <li><a href="#adviceDetailInvolved" data-transition="slide">How can I make sure my partner and/or family feel involved if they are cannot feed the baby?</a></li>
+      <li><a href="#adviceDetailEnough" data-transition="slide">I&apos;m worried that I am not making enough milk. How do I know that my baby is getting what they need?</a></li>
+
+      <li><a href="#adviceDetailPattern" data-transition="slide">My baby feeds a lot and there is no pattern. Is this normal?</a></li>
+      <li><a href="#adviceDetailHowMany" data-transition="slide">How many breast feeds should my baby be having?</a></li>
+      <li><a href="#adviceDetailBringsUp" data-transition="slide">My baby quite often brings up some milk after a feed. Should I be worried?</a></li>
+      <li><a href="#adviceDetailExpress" data-transition="slide">How do I store expressed breast milk?</a></li>
+      <li><a href="#adviceDetailPublic" data-transition="slide">I am worried about breastfeeding in public. Do you have any hints or tips?</a></li>
+      <li><a href="#adviceDetailWork" data-transition="slide">Can you help me when I return to work or if I need to stop breastfeeding?</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- ADVICE DETAIL -->
+<!-- <div data-role="page" id="adviceDetail">
+	<div data-role="header">
+	</div>
+	<header>
+		<a href="#advice" data-transition="slide" data-direction="reverse" class="back">
+			<img src="images/arrow-back2.jpg" alt="Back"><span>Back</span>
+		</a>
+	</header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+  <div class="title">Similique odit velit temporibus ipsa dolore exercitationem mollitia a at vel animi veniam?</div>
+   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, quaerat, autem voluptatibus assumenda soluta nesciunt provident. Ab, vero minus numquam magnam temporibus similique laborum at suscipit quos. Reiciendis, voluptatibus, sapiente.</p>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, vitae, iste, similique odit velit temporibus ipsa dolore exercitationem mollitia a at vel animi veniam. Velit impedit debitis unde et non.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, vitae, iste, similique odit velit temporibus ipsa dolore exercitationem mollitia a at vel animi veniam. Velit impedit debitis unde et non.</p>
+  </div>
+</div> -->
+
+<!-- ADVICE DETAIL 1 -->
+<div data-role="page" id="adviceDetailPainful">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">Is breastfeeding painful?</div>
+    <p>Breastfeeding should not be painful. If it is your first time breastfeeding then the sensation may seem a little unusual to begin with, but if you are finding it painful it may be that your baby&rsquo;s position or attachment needs adjusting or improving so get in touch with your local breastfeeding support team. If you are registered with a Solihull GP you can contact the You+ Baby team <a href="http://www.youplusbaby.co.uk/contact-us" onclick="window.open(this.href, '_blank');return false;">here</a>.</p>
+  </div>
+</div>
+
+<!-- ADVICE DETAIL 2 -->
+<div data-role="page" id="adviceDetailAlcohol">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">Can I drink alcohol while breastfeeding?</div>
+    <p>If alcohol is present in the bloodstream it can pass through to your breast milk, but it is unlikely that occasional small amounts of alcohol will harm your baby. You should not drink regularly or heavily.</p>
+    <p>Regardless of how you feed your baby alcohol consumption can affect your ability to care for your baby so consider whether you need to ask somebody else to take care of your baby.&nbsp; </p>
+    <p>Never sleep with your baby (in a bed or on a sofa) if you have consumed alcohol. </p>
+    <p>If you are concerned about your alcohol consumption see your GP or HV. You can also visit <a href="http://www.nhs.uk/chq/pages/958.aspx?CategoryID=54&SubCategoryID=135#close" onclick="window.open(this.href, '_blank');return false;">NHS Choices</a> who can provide you with information and support.</p>
+  </div>
+</div>
+
+<!-- ADVICE DETAIL 3 -->
+<div data-role="page" id="adviceDetailSmoke">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">What happens if I smoke when breastfeeding?</div>
+    <p>Smoking when breastfeeding is not recommended because if you are a smoker nicotine will pass through your breast milk to your baby. However breast milk will still protect your baby and provide nutritional benefits that formula can not so don&rsquo;t give up breastfeeding.</p>
+    <p> Never smoke (or allow anybody else to smoke) around your baby and do not sleep with your baby if you or your partner smoke.</p>
+    <p> If you would like help to stop breastfeeding contact your GP or your local NHS stop smoking team. If you are registered with a Solihull GP you can contact the Solihull Stop Smoking Service on <strong>0800 015 8512</strong> or visit <a href="htpp://www.solihullstopsmoking.co.uk">www.solihullstopsmoking.co.uk</a></p>
+  </div>
+</div>
+
+<!-- ADVICE DETAIL 4 -->
+<div data-role="page" id="adviceDetailMedi">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">Will I be able to take medication while breastfeeding?</div>
+    <p>This ultimately depends on the type of medication and you should always consult your GP or pharmacist. However you should be reassured that in most circumstances a suitable medication can be found that will allow you to continue breastfeeding.</p>
+    <p>Useful information regarding the use of medication whilst breastfeeding can also be found at <a href="http://www.breastfeedingnetwork.org.uk/" onclick="window.open(this.href, '_blank');return false;">www.breastfeedingnetwork.org.uk</a></p>
+  </div>
+</div>
+
+<!-- ADVICE DETAIL 5 -->
+<div data-role="page" id="adviceDetailWind">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">Do I need to wind a breastfed baby?</div>
+    <p>Yes. Be led by your baby&rsquo;s cues. How much wind a baby has and how easily they pass it varies from baby to baby, although their ability to pass it does tend to improve as they get bigger.</p>
+</div>
+</div>
+
+<!-- ADVICE DETAIL 6 -->
+<div data-role="page" id="adviceDetailInvolved">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">How can I make sure my partner and/or family feel involved if they are cannot feed the baby?</div>
+      <p>It is only the breastfeeding that is down to you. You are not the only person who can wind the baby, change the baby&rsquo;s nappy, wash or bath the baby; the list is pretty endless once you start to think about it. If you&rsquo;re concerned about your partner not being able to bond with the baby then you needn&rsquo;t be as feeding is not the only way that your partner can bond with your baby. Skin to skin, cuddles and bath times aren&rsquo;t just for breastfeeding mommies. </p>
+      <p>For more suggestions and support with sharing the load you can get in touch with your local breastfeeding support team.</p>
+    </div>
+</div>
+
+<!-- ADVICE DETAIL 7 -->
+<div data-role="page" id="adviceDetailEnough">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">I&apos;m worried that I am not making enough milk. How do I know that my baby is getting what they need?</div>
+      <p>The numbers of women who cannot make enough to sustain their babies are very small. If you have serious concerns then you should always contact a healthcare professional. However there are signs that you can look for yourself that will provide some reassurance.</p>
+      <ul>
+        <li>Feeding will be not be uncomfortable or painful.</li>
+        <li>Baby will be content and satisfied at the breast.</li>
+        <li>Baby will usually come off the breast of their own accord once they have finished a feed.</li>
+        <li>Baby&rsquo;s weight gain will be steady after the first two weeks.</li>
+        <li>Over the first five days of life baby&rsquo;s stools will usually change from a black tar like substance called meconium to loose yellow stools.</li>
+        <li>From around the fifth day your baby will have at least six wet nappies in a 24 hour period.</li>
+        <li>Baby will appear healthy and alert.</li>
+      </ul>
+      <p>For more suggestions and support with sharing the load you can get in touch with your local breastfeeding support team.</p>
+  </div>
+</div>
+
+<!-- ADVICE DETAIL 8 -->
+<div data-role="page" id="adviceDetailPattern">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">My baby feeds a lot and there is no pattern. Is this normal?</div>
+      <p>In a word yes.</p>
+      <p>The feeding behaviours of breastfed babies are quite different to those of artificially fed behaviours.</p>
+      <p>Breast milk is the perfect food for your baby and is very gentle on their tummies.  It is really easy for them to digest and there is very little in terms of waste.  The ease with which breast milk can be digested and the fact that breastfed babies will only take exactly what they need when they need it and will not overfeed means that many babies feed quite frequently in the early days and weeks of their life.  Don&rsquo;t see this as a negative though, being led by your baby in terms of how often and for how long they want to feed means that your baby is giving your body all of the signals it needs to build up your milk supply as well as giving you the opportunity to sit down and rest.</p>  
+      <p>You may find that your baby feeds more overnight which is perfectly normal.  It is due to the fact that your prolactin (milk making hormone) levels are higher at night and babies, quite cleverly, tend to wake a lot at night in order to take advantage of this.</p>
+    </div>
+</div>
+
+<!-- ADVICE DETAIL 9-->
+<div data-role="page" id="adviceDetailHowMany">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">How many breast feeds should my baby be having?</div>
+      <p>Your baby only needs about three feeds in the first 24 hours with the first one ideally being within the first hour of birth.  During skin to skin is quite often the ideal opportunity to try your first breastfeed.</p>
+      <p>After the first couple of days of life a breastfed baby will need to feed approximately eight to twelve times in twenty four hours and each feed can last anything from five to forty minutes.  You will probably find that in the early days and weeks there is very little pattern to these feeds, but as your baby grows and you and they get to know each other their feeds tend to become more predictable.
+      </p>
+    </div>
+</div>
+
+<!-- ADVICE DETAIL 10 -->
+<div data-role="page" id="adviceDetailBringsUp">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">My baby quite often brings up some milk after a feed. Should I be worried?</div>
+      <p>You should always talk to a health professional if you are worried about your baby, but it might reassure you to know that many babies posset after a feed when they are small.  However if your baby does not appear to be in any pain, is having plenty of wet and dirty nappies and their weight gain is satisfactory then there is probably very little to be concerned about.</p>
+    </div>
+</div>
+
+<!-- ADVICE DETAIL 11 -->
+<div data-role="page" id="adviceDetailExpress">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">How do I store expressed breast milk?</div>
+      <p>Breast milk can be stored in a sterilised container in the fridge for up to 5 days provided that the temperature is between 0 and 4 degrees Celsius.  It can also be stored in the freezer for up to six months provided that the freezer temperature is below -18 degrees Celsius.</p>
+    </div>
+</div>
+
+<!-- ADVICE DETAIL 12 -->
+<div data-role="page" id="adviceDetailPublic">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">I am worried about breastfeeding in public. Do you have any hints or tips?</div>
+      <p>How you feel about breastfeeding in public is very personal to you.  Some women are concerned by it and some aren&rsquo;t.  If you are one of those women who feels anxious (and you are not alone, plenty of women feel the same as you) you could start by attending a local breastfeeding support group or children&rsquo;s centre where there are lots of women in the same situation as you who can support you and you can exchange hints and tips.</p>
+
+      <p>If you live in Solihull or the local area details of our breastfeeding caf&eacute;&rsquo;s can be found here [insert link to webpage with Solihull breastfeeding caf&eacute; details]</p>
+
+      <p>Once you have built up your confidence and are ready to go out and about another tip would be to plan ahead and start by staying local and visiting places where you know you feel comfortable and welcome should you need to feed your baby.  If you are in Solihull you can use this app to help you to plan your journey and to find venues who have assured us that you will be welcome to feed there.</p>
+
+      <p>Lots of parents have top tips for breastfeeding in public.  If you live in Solihull or the surrounding areas and want to connect with other local parents you could visit our <a href="https://www.facebook.com/groups/breastfeedingsolihull/" onclick="window.open(this.href, '_blank');return false;">Facebook page</a> or tweet us <a href="https://twitter.com/youplusbaby" onclick="window.open(this.href, '_blank');return false;">@youplusbaby</a></p>
+
+      <p>Some of the tips that we have picked up from local parents include:-</p>
+      <ul>
+        <li>Using a muslin cloth or a scarf to cover up if you feel you need to.</li>
+        <li>Wearing a stretchy vest or boob tube under your normal top so that you can pull one top down and one up.  That way you need not worry so much about exposing yourself if that is something that concerns you.  </li>
+        <li>Trying to be comfortable in your own skin.  If somebody is uncomfortable with you breastfeeding your baby that is their problem and not yours.  You wouldn&rsquo;t ask somebody to move because you didn&rsquo;t like what they were eating or drinking so your baby shouldn&rsquo;t have to either.</li>
+      </ul>
+
+      <p>If you live in Solihull you can find out more about the support that is available to you at the <a href="http://www.youplusbaby.co.uk/help-and-support" onclick="window.open(this.href, '_blank');return false;">YouPlusBaby</a> site.</p>
+
+      <p>Finally, know your rights!  When it comes to breastfeeding in public you are protected by law.  For more information on your rights when breastfeeding you can a contact Maternity Action on 0845 600 85 33 or visit www.maternityaction.org.uk</p>
+    </div>
+</div>
+
+<!-- ADVICE DETAIL 13 -->
+<div data-role="page" id="adviceDetailWork">
+  <div data-role="header"> </div>
+  <header class="adviceDetail"> <a href="#advice" data-transition="slide" data-direction="reverse" class="back"> <img src="images/arrow-back2.jpg" alt="Back"><span>Back</span> </a> </header>
+  <div data-role="main" class="ui-content adviceDetailContent">
+    <div class="title">Can you help me when I return to work or if I need to stop breastfeeding?</div>
+      <p>Of course we can.  We are here to support local parents through the whole of their breastfeeding journey not just at the start of it.  You can <a href="http://www.youplusbaby.co.uk/contact-us" onclick="window.open(this.href, '_blank');return false;">call us</a>, message us on <a href="https://www.facebook.com/groups/breastfeedingsolihull/" onclick="window.open(this.href, '_blank');return false;">Facebook</a>, <a href="https://twitter.com/youplusbaby" onclick="window.open(this.href, '_blank');return false;">Tweet us</a> or come into the You+ shop or <a href="http://www.youplusbaby.co.uk/help-and-support" onclick="window.open(this.href, '_blank');return false;">breastfeeding caf&eacute;s</a> and see one of us because we care.</p>
+    </div>
+</div>
+
+<!-- MAP LIST --> 
+<div data-role="page" id="map">
+	<div data-role="header">
+		<header>
+      <form id="mapForm">
+        <img src="images/magnifying-glass.jpg" alt="Magnifying" class="magnify">
+			  <input id="mapSearchBox" placeholder="Search" type="text" name="search" data-role="none" />
+        <!-- <img src="images/icon-clear.jpg" alt="Clear" class="clear"> -->
+      </form>
+		</header>
+	</div>
+    <div data-role="main" class="ui-content mapArea">
+    	<div class="location">
+    		<span id="mapAreaTitle">Map of locations</span>
+        <img src="images/icon-map-list.jpg" alt="List" id="location2">
+        <img src="images/icon-map-pin.jpg" alt="Pins" id="location1">
+    	</div>
+    	<div id="tabMap">
+    		
+    	</div>
+    	<div id="tabList">
+			</div>
+    </div>
+</div>
+<!-- MAP DETAIL --> 
+<div data-role="page" id="mapDetail">
+	<div data-role="header">
+		<header>
+			<a href="#map" data-transition="slide" data-direction="reverse" class="back">
+				<img src="images/arrow-back2.jpg" alt="Back"><span>Back</span>
+			</a>
+		</header>
+	</div>
+    <div data-role="main" class="ui-content mapDetailContent">
+    	<div class="leftCol">
+    		<div class="distance">
+    			<span id=""><p id="mapDistance">0.2</p>miles</span>
+    		</div>
+    	</div>
+    	<div class="rightCol">
+    		<div class="name" id="mapName">Name of Location</div>
+        <span id="mapAddress"></span>
+			<div class="phone" id="mapPhone"></div>
+			<ul>
+				<li><a id="mapPhoneLink" href=""><img src="images/icon-call.jpg" alt="Call">CALL</a></li>
+				<li><a id="mapDirectionsLink" href=""><img src="images/icon-directions.jpg" alt="Directions">DIRECTIONS</a></li>
+			</ul>
+    	</div>
+    </div>
+</div>
+<!-- DIARY -->
+<div data-role="page" id="diary">
+	<div data-role="header">
+		<header>
+			<div class="avatar">
+        <a data-transition="slide" href="#babyCamera" class="avatarLink">
+				  <img id="diary-profile-photo" src="images/avatar.jpg" alt="avatar">
+        </a>
+			</div>
+			<div class="name" id="diary-profile-name">William</div>
+			<div class="time"><strong>Last feed: </strong><span id="diary-feed-time">Tues 2/5 at 15:20</span></div>
+			<div class="side"><strong>Last feed length:</strong> <span id="diary-feed-duration">0:48</span></div>
+		</header>
+	</div>
+  <div data-role="main" class="ui-content diaryList">
+  	<div class="diaryTableHeader">
+  		<div class="feeds">NO. OF<br/>FEEDS</div>
+      <div class="left">TOTAL<div class="side"><div class="circle"><span id="timer-feed-side">L</span></div></div></div>
+      <div class="right">TOTAL<div class="side"><div class="circle"><span id="timer-feed-side">R</span></div></div></div>
+  		<div class="totalTime">FEEDING<br/>TOTAL</div>
+      <img src="images/edit.png" alt="edit" class="editGlobal" />
+  	</div>
+  	<ul id="diary-content">
+  		
+  	</ul>
+  </div>
+</div>   
+<!-- MORE PAGE -->
+<div data-role="page" id="more">
+	<div data-role="header">
+	</div>
+	<header>
+		<div class="title">More</div>
+	</header>
+  <div data-role="main" class="ui-content moreList">
+    <div class="heading">Settings</div>
+    <ul>
+      <li><a href="#baby" data-transition="slide"><div class="aboutBabyAvatarWrapper"><img src="images/icon-baby.jpg" id="aboutBabyAvatar" alt="YouPlusBaby"></div><span>My Baby's Details</span></a><div class="clear: both;"></div></li>
+    </ul>
+    <div class="heading">Links</div>
+    <ul>
+  		<li><a href="https://twitter.com/youplusbaby" onclick="window.open(this.href, '_blank');return false;"><img src="images/icon-twitter.png" alt="YouPlusBaby">YouPlusBaby</a></li>
+  		<li><a href="https://www.facebook.com/groups/breastfeedingsolihull/" onclick="window.open(this.href, '_blank');return false;"><img src="images/icon-facebook.png" alt="BreastfeedSolihull">BreastfeedSolihull</a></li>
+  		<li><a href="http://www.youplusbaby.co.uk" onclick="window.open(this.href, '_blank');return false;"><img src="images/icon-link.png" alt="www.youplusbaby.co.uk">www.youplusbaby.co.uk</a></li>
+  		<li><a href="#about" data-transition="slide"><img src="images/icon-info.png" alt="YouPlusBaby">About this app...</a></li>
+  	</ul>
+  </div>
+</div>
+<!-- ABOUT PAGE -->
+<div data-role="page" id="about">
+	<div data-role="header">
+	</div>
+	<header>
+		<a href="#more" data-transition="slide" data-direction="reverse" class="back">
+			<img src="images/arrow-back2.jpg" alt="Back"><span>Back</span>
+		</a>
+	</header>
+  <div data-role="main" class="ui-content about">
+  	<div class="title">About this app</div>
+	<p>Find places to breastfeed in Solihull and get helpful pregnancy and breastfeeding  information at the click of a button with the Feeding Friend app. Our interactive Map shows breastfeeding-friendly cafes and locations across the town, making it easier for you to feed when you're out and about. The easy-to-use Timer tool is great for the early days and gets you off to a good start. Our Advice section contains all sorts of tips from experts on how to keep you and your baby healthy and happy when breastfeeding, and you can even personalise your app with your baby's details and photo. Download the Feeding Friend app today or visit <a href="http://www.youplusbaby.co.uk" onclick="window.open(this.href, '_blank');return false;">www.youplusbaby.co.uk</a> for more information.</p>
+	Developed by Diva Creative<br />
+	Version: 1.1
+  </div>
+</div>
+<!-- FOOTER --> 
+<footer data-role="navbar" data-position="fixed">
+  <ul>
+    <li>
+    	<a href="#advice"  data-transition="slide">
+    		<img src="images/icon-advice.png" class="advice" alt="advice"><div>Advice</div>
+    	</a>
+    </li>
+    <li>
+    	<a href="#timer"  data-transition="slide">
+    		<img src="images/icon-timer.png" class="timer" alt="timer"><div>Timer</div>
+    	</a>
+    </li>
+    <li>
+    	<a href="#map"  data-transition="slide">
+    		<img src="images/icon-map.png" class="map" alt="map"><div>map</div>
+    	</a>
+    </li>
+    <li>
+    	<a href="#diary"  data-transition="slide">
+    		<img src="images/icon-diary.png" class="diary" alt="diary"><div>diary</div>
+    	</a>
+    </li>
+    <li>
+    	<a href="#more"  data-transition="slide">
+    		<img src="images/icon-more.png" class="more" alt="more"><div>more</div>
+    	</a>
+    </li>
+  </ul>
+</footer>
+  
+<script type="text/javascript">
+	$( document ).ready(function() {
+
+    /* DYNAMIC CONTENT */
+
+     var outer = $(window).height();
+     var footer = $('footer').height();
+     var cameraFooter = $('.buttons').height();
+     var header = $('#advice header').height() + 20;
+     var header2 = $('#adviceDetail header').height() + 40;
+     var header3 = $('#map header').height() + 20;
+     var header4 = $('#diary header').height() + 20;
+     var header5 = $('#more header').height() + 20;
+     var header6 = $('#babyCamera header').height() + 20;
+     var header7 = $('#about header').height() + 40;
+     var newHeightAdviceList = outer - header - footer;
+     var newHeightAdviceDetail = outer - header2 - footer - 40;
+     var newHeightMap = outer - header3 - footer;
+     var newDiaryMap = outer - header4 - footer - 11;
+     var newMore = outer - header5 - footer;
+     var newCamera = outer - footer;
+     var newBaby = outer - header6 - cameraFooter - 11;
+     var newAbout = outer - header7 - footer - 11;
+     $('.adviceList').css('height', newHeightAdviceList);
+     $('.adviceDetailContent').css('height', newHeightAdviceDetail);
+     $('.mapArea').css('height', newHeightMap);
+     $('.diaryList').css('height', newDiaryMap);
+     $('.moreList').css('height', newMore);
+     $('.homePage').css('height', outer-32);
+     $('.cameraContent').css('height', newCamera);
+     $('.imageWrapper').css('height', newBaby);
+     $('.about').css('height', newAbout);
+
+		 /**
+      * Map
+      */
+      $(location1).click(function() {
+          $(tabMap).css('display','block');
+          $(tabList).css('display','none');
+          app.maps.googleMapsRefresh();
+          $(mapAreaTitle).html('Map of locations');
+      });
+
+      $(location2).click(function() {
+          $(tabMap).css('display','none');
+          $(tabList).css('display','block');
+          $(mapAreaTitle).html('List of locations');
+      });
+      
+      var loadMapLocations = function(){
+        var locations = app.maps.getLocationsList();
+        var html = '<ul>';
+        for(var i=0; i<locations.length; i++){
+            var location = locations[i];
+            var maplocation = location.location.latitude + ',' + location.location.longitude;
+            html += '<li><a href="#mapDetail" data-transition="slide" data-name="' + location.title + '"' +
+            ' data-address="' + location.address + '" data-location="' + maplocation + '" data-phone="' + location.telephone + '" data-distance="' + location.distance + '">' +
+                    '<div class="distance"><span>' + location.distance + 
+                    '<br/>miles</span></div>' + location.title + '</a></li>';
+        }
+        html += '</ul>';
+        $('#tabList').html(html);
+        $('#tabList a').on('click', function(){
+          var $this = $(this);
+          $('#mapName').html($this.data('name'));
+          $('#mapAddress').html($this.data('address'));
+          $('#mapPhone').html($this.data('phone'));
+          $('#mapPhoneLink').attr('href', 'tel:' + $this.data('phone'));
+          $('#mapDirectionsLink').on('click', function(){
+            var start = app.maps.currentLocation.latitude + ',' + app.maps.currentLocation.longitude;
+            var end = $this.data('location');
+            window.open('http://maps.google.com/maps?saddr=' + start + '&daddr=' + end, '_system');
+          });
+          $('#mapDistance').html($this.data('distance'));
+        });
+      }
+
+      var loadMaps = function(){
+        // Load the maps in to view...
+        app.maps.load($('#tabMap'), function(){
+            loadMapLocations();
+        }, 
+        function(){
+          // Unable to load maps.. handle this..
+        });
+      }
+
+      $('#mapForm').on('submit', function(){
+        app.maps.setCurrentLocation($('#mapSearchBox').val(), function(){
+          loadMapLocations();
+        }, function(){
+          // Handle unable to find location here...
+          // AMEND_002 - add code here to handle location can not be found...
+
+        });
+        return false;
+      })
+      
+      /**
+       * Profile
+       */
+      var loadProfileData = function(){
+        try{
+          var name = app.profile.get('name');
+          $('#profile-name').val(name);
+          $('#diary-profile-name').html(name);
+          $('#timer-profile-name').html(name);
+        }catch(e){}
+          //$('#profile-dob').val(app.profile.get('dob'));
+        try{
+          var photo = app.profile.get('photo');
+          $('#profile-photo').attr('src', photo);
+          $('#diary-profile-photo').attr('src', photo);
+          $('#timer-profile-photo').attr('src', photo);
+
+          /* Swap baby image logic */
+          if (photo == '' ) {
+            homePhoto = 'images/icon-baby-home.png';
+            aboutPhoto = 'images/icon-baby.jpg';
+          } else{
+            homePhoto = photo;
+            aboutPhoto = photo;
+          }
+          $('.homePage .wrapper .baby img').attr('src', homePhoto);
+          $('#aboutBabyAvatar').attr('src', aboutPhoto);
+
+
+
+        } catch(e){}
+      }
+
+      $('#profile-submit').on('click', function(){
+        var name = $('#profile-name').val();
+        //var dob = $('#profile-dob').val();
+        app.profile.set('name', name);
+        //app.profile.set('dob', dob);
+        loadProfileData();
+        //return false;
+      });
+
+      $('#photo-take').on('click', function(){
+        return app.profile.setPhotoFromCamera(function(){
+          loadProfileData();
+          // AMEND_003 - Add Feedback to indicate the photo you have taken has been saved.
+        }, function(){
+          // handle eror getting photo
+        })
+      });
+
+      $('#photo-get').on('click', function(){
+        return app.profile.setPhotoFromAlbum(function(){
+          loadProfileData();
+          // AMEND_004 - Add Feedback to indicate the photo you have chosen from library has been saved.
+        }, function(){
+          // handle error getting photo
+        })
+      });
+
+    /**
+     * Timer && Diary
+     */
+    var loadFeedData = function(ignoreDiary){
+        var last = app.timer.getLastRecord();
+        var d = last.finish == 0 ? new Date() : new Date(last.finish);
+        var fed = new Date(new Date() - d);
+        var hours = fed.getHours();
+        var mins = fed.getMinutes();
+        
+        $('#timer-feed-time').html(hours + 'hrs and ' + mins + 'mins ago');
+        $('#timer-feed-side').html(last.side.toUpperCase());
+
+        var date = '', 
+            duration = app.timer.formatDuration(0);
+
+        if(last.finish != 0){
+          var lastDate = new Date(last.finish);
+          var day = (['Sun','Mon','Tues','Wed','Thur','Fri','Sat'])[lastDate.getDay()];
+          date = day + ' ' + lastDate.getDate() + '/' + (lastDate.getMonth()+1);
+          duration = last.duration;
+        }
+        $('#diary-feed-time').html(date);
+        $('#diary-feed-duration').html(duration);
+
+        if(!(ignoreDiary||false)){
+          populateDiary();
+        }
+    }
+
+    var writeFeeding = function(counter, id, timer, day){
+      return '<li><div class="feeds">' + counter + '</div>' +
+             
+              // AMEND_001 
+              '<div class="totalLeftTime">' + app.timer.formatDuration(timer.left) + '</div>' +
+              '<div class="totalRightTime">' + app.timer.formatDuration(timer.right) + '</div>' +
+              '<div class="totalTime">' + app.timer.formatDuration(timer.total) + '</div>' +
+              '<img src="images/edit.png" alt="edit" class="editDetail" id="' + id + '" data-day="' + day + '" />' + 
+              '</li>';
+    }
+
+    var populateDiary = function(){
+      var records = app.timer.getRecordsByDay();
+      var html = '';
+      var days = ['Sun','Mon','Tues','Wed','Thur','Fri','Sat'];
+
+      if(records && records.length){
+        for(var i=0; i<records.length; i++){
+          var day = records[i];
+          var date = new Date(day.day);
+          html += '<li id="' + day.day + '"><a href="">' +
+            '<div class="date"><span>' + days[date.getDay()] + '<br/>' + date.getDate() + '/' + date.getMonth() + '</span></div>' +
+            '<div class="feeds">' + day.records.length + '</div>' +
+            '<div class="totalTimeLeft">' + day.durationLeft + '</div>' +
+            '<div class="totalTimeRight">' + day.durationRight + '</div>' +
+            '<div class="totalTime">' + day.duration + '</div>' +
+            '<img src="images/arrow-down.png" alt="arrow" class="arrow" />' +
+            '</a><div class="clear"></div><ul>';
+          for(var x=0; x<day.records.length; x++){
+            var feed = day.records[x];
+            html += writeFeeding((x+1), feed.id, feed.timer, day.day);
+          }
+          html += '</ul></li>';
+        }
+      }
+
+      $('#diary-content').html(html);
+
+      // Delete record button
+      // ---
+      $('#diary-content .editDetail').on('click', function(){
+        var dayId = $(this).data('day');
+        app.timer.deleteRecord(this.id);
+        var day = app.timer.getRecordsByDay(dayId);
+
+        if(day){
+          $('#' + dayId + ' .feeds').first().html(day.records.length);
+          $('#' + dayId + ' .totalTime').first().html(day.duration);
+          $(this).parent().fadeOut(300, function(){
+             // Record removed!
+             // Reload the diary
+             loadFeedData(true);
+             var height = (day.records.length* 35) + 44;
+             $('#' + dayId).css('height', height);
+          });
+        } else {
+          $('#' + dayId).fadeOut(300);
+        }
+        
+      });
+
+      // Expand day buttons
+      // ---
+      $('.diaryList ul li a').click(function() {
+        var $this = $(this);
+        if ($this.parent('li').height() == 44 ) {
+          var height = ($this.parent().find('li:visible').length * 35) + 44
+          $this.parent().toggleClass('selected');
+          //var height = $('.diaryList ul li ul li').length * 44;
+          $this.parent('li').css('height', height);
+        } else{
+          $this.parent('li').css('height', 44);
+          $this.parent().toggleClass('selected');
+        }
+      });
+    }
+    
+    /**
+     * Timer controls
+     */
+		var h1 = document.getElementById('clock'),
+		    status = document.getElementById('tap'),
+        start = $('#nipple');
+
+    start.on('click', function(){
+        
+        if(app.timer.interval){
+          app.timer.pause();
+          return false;
+        }
+
+        app.timer.start({
+          tick: function(time){
+            h1.textContent = time;
+          },
+          start: function(){
+            status.textContent = 'Tap to Pause';
+            $('#timer-save').css('opacity', '1');
+            $('#timer-reset').css('opacity', '1');
+          },
+          pause: function(){
+            status.textContent = 'Tap to Resume';
+            $('#timer-save').css('opacity', '1');
+            $('#timer-reset').css('opacity', '1');
+          },
+          reset: function(){
+            status.textContent = 'Tap to Start';
+            h1.textContent = app.timer.getEmptyCounter();
+            $('#timer-save').css('opacity', '0.2');
+            $('#timer-reset').css('opacity', '0.2');
+          }
+        });
+
+        return false;
+    });
+
+    $('#timer-save').on('click', function(){
+      app.timer.save();
+      loadFeedData();
+    });
+
+    $('#timer-reset').on('click', function(){
+      console.log('timer reset!!');
+      app.timer.reset();
+    });
+
+		// Side controls
+		$('.reminder').click(function() {
+      $('.reminder').toggleClass( "selected" );
+      var $this = $(this)
+      var selected = $this.hasClass('selected');
+      var side = $this.hasClass('left') ? (selected ? 'l' : 'r') : (selected ? 'r' : 'l');
+      app.timer.setSide(side);
+		});
+
+		$('footer ul li a img').click(function() {
+			$('footer ul li a img').removeClass( "selected" );
+			$(this).addClass( "selected" );
+		});
+
+    $('.editGlobal').click(function() {
+      $('.diaryList ul li ul li').toggleClass('slide');
+      $('.editGlobal').toggleClass('rotate');
+    });
+
+    $('#home a').click(function() {
+      $('footer').css('display', 'block');
+    });
+
+    $('.back').click(function() {
+      $('footer').css('display', 'block');
+    });
+
+    $('a.camera').click(function() {
+      $('footer').css('display', 'none');
+    });
+
+    $('a.avatarLink').click(function() {
+      $('footer').css('display', 'none');
+    });
+
+    $('#mapForm .clear').click(function() {
+      $('#mapSearchBox').val("");
+    });
+
+
+    // Detect when a page is about to change...
+    $(document).on("pagecontainerbeforetransition", function(e, data) {
+      
+      var toPage = data.toPage[0].id;
+      if(!window.app){ return; }
+
+      // Navigating to maps
+      if(toPage == 'map'){
+        loadMaps();
+        // refresh the maps...
+        if(app.maps && app.maps.googleMapsRefresh){
+          setTimeout(function(){ app.maps.googleMapsRefresh(); }, 500);
+        }
+      }
+
+      // Navigating to diary or timer
+      if(toPage == "diary" || toPage == "timer"){
+        // Ensure feed data is up-to-date.
+        loadFeedData();
+        loadProfileData();
+      }
+
+    });
+      
+    var loadIt = function(){
+
+        loadMaps();
+        loadProfileData();
+        loadFeedData();
+
+        var hideSplashAfter = 2000;
+        setTimeout(function() {
+          if(testing){
+            testing.start();
+          }
+          navigator.splashscreen.hide();
+        }, hideSplashAfter);
+
+    };
+
+    var deviceReady = false;
+    setTimeout(function(){
+        if(!deviceReady){
+          loadIt();
+        }
+    }, 3000);
+    document.addEventListener("deviceready", function(){
+        deviceReady = true;
+        loadIt();
+    }, false);
+	});
+</script>
 </body>
-</html>
+</html

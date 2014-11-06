@@ -1,0 +1,50 @@
+/* Reset CSS */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video
+{ margin:0;  padding:0;  border:0;  outline:0;  font-size:100%;  vertical-align:baseline;  background:transparent;  background-repeat:no-repeat;}
+a{background-repeat:no-repeat; outline:none; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display:block; }
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;}
+table, td, th {vertical-align:top;}
+blockquote:before, blockquote:after, q:before, q:after {content:"";} blockquote, q {quotes:"" "";} a img {border:none;outline:none;}
+.clearfix,.clear{clear: both;}
+.clearfix:after,.clear:after{content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.hide{ display:none; }
+#feedback
+{
+	padding:10px;
+	border:1px solid #CBD0D4;
+	margin-bottom:20px;
+}
+
+.feedback-green
+{
+	border:1px solid #C6D880!important;
+	color:#264409!important;
+	background-color:#E6EFC2;
+}
+
+.feedback-red
+{
+	border:1px solid #e3001f!important;
+	color:#620512!important;
+	background-color:#f0c2c8;
+}
+img { -ms-interpolation-mode: bicubic; }
+
+
+html{
+
+}
+
+body{
+	font-family:Arial;
+	font-size:13px;
+	line-height: 1.5384615em; /* 20px from 13px */
+	color:#000;
+	margin:0 auto;
+	min-height: 100%;
+	/*max-width:990px;*/
+}

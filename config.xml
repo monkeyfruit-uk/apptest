@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "uk.co.monkeyfruit.apptest"
+        id          = "com.divacreative.breastfeeding"
         versionCode = "" 
         version     = "1.1.0" >
 
     <!-- versionCode is optional and Android only -->
 
-    <name>App Test</name>
+    <name>Feeding Friend</name>
 
     <description>
-       An app to test
+        An app to make breastfeeding easier and more fun. 
     </description>
 
     <author href="https://build.phonegap.com" email="support@phonegap.com">
-        Monkeyfruit Developer
+        Steve Dupree
     </author>
 
     <preference name="orientation" value="portrait" />
@@ -31,5 +31,17 @@
     <gap:plugin name="org.apache.cordova.device-orientation" version="0.3.5" />
     <gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
     <gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" />
+
+    <icon src="images/icon-60.png" gap:platform="ios" width="60" height="60" />
+    <icon src="images/icon-57.png" gap:platform="ios" width="57" height="57" />
+    <icon src="images/icon-72.png" gap:platform="ios" width="72" height="72" />
+    <icon src="images/icon-60@2x.png" gap:platform="ios" width="120" height="120" />
+    <icon src="images/icon-152.png" gap:platform="ios" width="152" height="152" />
+    <icon src="images/icon-60.png" />
+
+    <gap:splash src="images/Default.png" />
+    <gap:splash src="images/Default.png" gap:platform="ios" width="320" height="480" />
+    <gap:splash src="images/Default@2x.png" gap:platform="ios" width="640" height="960" />
+    <gap:splash src="images/Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />
 
 </widget>
