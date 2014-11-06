@@ -51,11 +51,40 @@ window.testing = new (function(){
 	};
 
 
+	me.timer = function(){
+		setTimeout(function(){
+			$('a.timer').click();
+			setTimeout(function(){
+				$('#tap').click();
+				setTimeout(function(){
+					$('#timer-save').click();
+					setTimeout(function(){
+						$('#timer .right').first().click();
+						setTimeout(function(){
+							$('#tap').click();
+							setTimeout(function(){
+								$('#timer-save').click();
+								setTimeout(function(){
+									$('.diary').click();
+									setTimeout(function(){
+										$('#diary-content a').first().click();
+									}, extendedTimeout);
+								}, extendedTimeout);
+							}, extendedTimeout);
+						}, extendedTimeout);
+					}, extendedTimeout);
+				}, extendedTimeout);
+			}, extendedTimeout);
+		}, shortTimeout);
+	};
+
+
 	// 
 	me.start = function(){
 		//me.adviceScreen();
 		//me.moreScreen();
-		me.maps();
+		//me.maps();
+		me.timer();
 	}
 
 	//
