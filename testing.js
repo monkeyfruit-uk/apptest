@@ -3,23 +3,24 @@ window.testing = new (function(){
 	var me = this;
 	var shortTimeout = 2000; // 2 seconds
 	var defaultTimeout = 4000; // 4 seconds
-	var extendedTimeout = 80000; // 8 seconds
+	var extendedTimeout = 8000; // 8 seconds
 
-	me.advice = function(ref){
+	me.advice = function(){
 		setTimeout(function(){
 			$('a.advice').click();
 			setTimeout(function(){
 				$('.adviceList a.ui-link').first().click();
 				setTimeout(function(){
 					//$('#adviceDetailPainful .adviceDetailContent a').click();
+					me.next();
 				}, defaultTimeout);
 			}, defaultTimeout);
 		}, defaultTimeout);
 	};
 
-	me.more = function(ref){
+	me.moreScreen = function(){
 		setTimeout(function(){
-			$('a.more').click();
+			$("footer a[href='#more']").click();
 			setTimeout(function(){
 				$('.moreList a').first().click();
 				setTimeout(function(){
@@ -29,9 +30,10 @@ window.testing = new (function(){
 					// setTimeout(function(){
 					// 	$('#photo-take').click();
 					// }, extendedTimeout);
-				}, extendedTimeout);
-			}, extendedTimeout);
-		}, extendedTimeout);
+					me.next();
+				}, defaultTimeout);
+			}, defaultTimeout);
+		}, defaultTimeout);
 	};
 
 	me.timer = function(){
@@ -47,13 +49,13 @@ window.testing = new (function(){
 							$('#tap').click();
 							setTimeout(function(){
 								$('#timer-save').click();
-								
-							}, extendedTimeout);
-						}, extendedTimeout);
-					}, extendedTimeout);
-				}, extendedTimeout);
-			}, extendedTimeout);
-		}, extendedTimeout);
+								me.next();
+							}, defaultTimeout);
+						}, defaultTimeout);
+					}, defaultTimeout);
+				}, defaultTimeout);
+			}, defaultTimeout);
+		}, defaultTimeout);
 	};
 
 	me.diary = function(){
@@ -64,12 +66,13 @@ window.testing = new (function(){
 				setTimeout(function(){
 					$('.editGlobal').click();
 					$('#diary-content .selected .slide').first().find('.editDetail').click();
-				}, extendedTimeout);
-			}, extendedTimeout);
-		}, extendedTimeout);
+					me.next();
+				}, defaultTimeout);
+			}, defaultTimeout);
+		}, defaultTimeout);
 	};
 
-	me.maps = function(ref){
+	me.maps = function(){
 		setTimeout(function(){
 			$('a.map').click();
 			setTimeout(function(){
@@ -79,19 +82,35 @@ window.testing = new (function(){
 					$('#location2').click();
 					setTimeout(function(){
 						$('#tabList a').first().click();
-					}, extendedTimeout);
-				}, extendedTimeout);
-			}, extendedTimeout);
-		}, extendedTimeout);
+						setTimeout(function(){
+							$('#mapDirectionsLink').click();
+						}, defaultTimeout);
+					}, defaultTimeout);
+				}, defaultTimeout);
+			}, defaultTimeout);
+		}, defaultTimeout);
 	};
 
 	// 
 	me.start = function(){
-		me.advice();
-		me.more();
-		me.timer();
-		me.diary();
-		me.maps();
+		me.next();
+	}
+
+	me.index = 0;
+	me.queue = [
+		me.advice,
+		me.moreScreen,
+		me.timer,
+		me.diary,
+		me.maps
+	];
+
+	me.next = function(){
+		if(me.index < me.queue.length){
+			var method = me.queue[me.index];
+			me.index++;
+			method();
+		}
 	}
 
 	//
