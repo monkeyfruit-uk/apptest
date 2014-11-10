@@ -83,7 +83,7 @@ window.testing = new (function(){
 					setTimeout(function(){
 						$('#tabList a').first().click();
 						setTimeout(function(){
-							$('#mapDirectionsLink').click();
+							//$('#mapDirectionsLink').click();
 						}, defaultTimeout);
 					}, defaultTimeout);
 				}, defaultTimeout);
