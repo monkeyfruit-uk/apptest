@@ -33,7 +33,6 @@
 </script>
 <script data-main="js/app" src="js/require.js"></script>
 <script data-main="js/app" src="testing.js"></script>
-
 </head>
 <body>
 <div id="container"/>
@@ -865,22 +864,19 @@
     });
       
     var loadIt = function(){
+        
         if(!window.app){
           setTimeout(loadIt, 100);
-          return
+          return;
         }
+
         loadMaps();
         loadProfileData();
         loadFeedData();
 
         var hideSplashAfter = 2000;
         setTimeout(function() {
-          if(testing){
-            testing.start();
-          }
-          if(navigator.splashscreen){
             navigator.splashscreen.hide();
-          }
         }, hideSplashAfter);
 
     };
